@@ -57,7 +57,7 @@ const Header = () => {
 
           <button className='relative overflow-hidden border-2 border-blue-400/30 hover:border-blue-300 rounded-full flex items-center justify-center gap-3 px-7 py-3.5 text-white font-medium text-base transition-all duration-300 hover:shadow-lg group'>
             <a
-              href="https://my-portfolio-jay-joshis-projects.vercel.app/"
+              href="https://portfolio-zeta-steel-31.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className='relative z-10 flex items-center gap-2'
