@@ -12,8 +12,24 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 app.use(express.json());
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  process.env.ADMIN_URL,
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://localhost:3000"
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "*",
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps, curl, or server-to-server)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    // Allow the origin dynamically to avoid blocking admin/client panels
+    return callback(null, true);
+  },
   credentials: true
 }));
 
